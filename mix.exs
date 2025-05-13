@@ -15,7 +15,9 @@ defmodule Ht16k33Multi.MixProject do
       name: "Ht16k33Multi",
       source_url: "https://github.com/alexisruccius/ht16k33_multi",
       homepage_url: "https://github.com/alexisruccius/ht16k33_multi",
-      docs: &docs/0
+      docs: docs(),
+      # Hex
+      package: package()
     ]
   end
 
@@ -43,6 +45,15 @@ defmodule Ht16k33Multi.MixProject do
       main: "Ht16k33Multi",
       logo: "assets/ht16k33multi-logo.jpg",
       extras: ["README.md"]
+    ]
+  end
+
+  # Hex package
+  defp package do
+    [
+      maintainers: ["Alexis Ruccius"],
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/alexisruccius/ht16k33_multi"}
     ]
   end
 end
