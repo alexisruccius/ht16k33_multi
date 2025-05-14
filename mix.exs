@@ -3,7 +3,7 @@ defmodule Ht16k33Multi.MixProject do
 
   def project do
     [
-      app: :ht16k33Multi,
+      app: :ht16k33_multi,
       version: "0.1.0",
       description:
         "A library for controlling one or more Ht16k33 microchips, which are commonly used to drive 7-segment displays.",
@@ -12,7 +12,6 @@ defmodule Ht16k33Multi.MixProject do
       deps: deps(),
 
       # ExDocs
-      name: "Ht16k33Multi",
       source_url: "https://github.com/alexisruccius/ht16k33_multi",
       homepage_url: "https://github.com/alexisruccius/ht16k33_multi",
       docs: docs(),
@@ -52,7 +51,7 @@ defmodule Ht16k33Multi.MixProject do
   defp package do
     [
       maintainers: ["Alexis Ruccius"],
-      licenses: ["Apache 2.0"],
+      licenses: ["Apache-2.0"],
       links: %{"GitHub" => "https://github.com/alexisruccius/ht16k33_multi"}
     ]
   end
