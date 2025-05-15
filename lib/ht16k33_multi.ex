@@ -158,7 +158,6 @@ defmodule Ht16k33Multi do
     %{id: Keyword.get(options, :name, __MODULE__), start: {__MODULE__, :start_link, [options]}}
   end
 
-  @spec start_link(keyword()) :: :ignore | {:error, any()} | {:ok, pid()}
   @doc """
   Starts the `Ht16k33Multi` GenServer.
 
@@ -196,6 +195,7 @@ defmodule Ht16k33Multi do
   ```
   """
   @doc since: "0.1.0"
+  @spec start_link(keyword()) :: :ignore | {:error, any()} | {:ok, pid()}
   def start_link(options \\ []) do
     name = Keyword.get(options, :name, __MODULE__)
     i2c_bus = Keyword.get(options, :i2c_bus, @i2c_bus)
@@ -204,7 +204,6 @@ defmodule Ht16k33Multi do
     GenServer.start_link(__MODULE__, {name, i2c_bus, address}, name: name)
   end
 
-  @spec status(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: %Ht16k33Multi{}
   @doc """
   Returns the current state of the `Ht16k33Multi` GenServer.
 
@@ -219,9 +218,9 @@ defmodule Ht16k33Multi do
   ```
   """
   @doc since: "0.1.0"
+  @spec status(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: %Ht16k33Multi{}
   def status(name \\ __MODULE__), do: GenServer.call(name, :status)
 
-  @spec write(any(), atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   @doc """
   Writes a string or integer to the 7-segment display.
 
@@ -239,9 +238,9 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.write(43, :red_leds)
   """
   @doc since: "0.1.0"
+  @spec write(any(), atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   def write(characters, name \\ __MODULE__), do: GenServer.cast(name, {:write, characters})
 
-  @spec write_to_all(binary(), list(), keyword()) :: list()
   @doc """
   Writes a string of characters or an integer to multiple 7-segment displays.
 
@@ -263,12 +262,12 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.write_to_all("Hola que tal?", [:blue_leds, :red_leds, :yellow_leds])
   """
   @doc since: "0.1.0"
+  @spec write_to_all(binary(), list(), keyword()) :: list()
   def write_to_all(characters, devices_names, option \\ []) do
     MultiDevices.split_for_devices(characters, devices_names, option)
     |> Enum.map(fn {device, word} -> Ht16k33Multi.write(word, device) end)
   end
 
-  @spec blinking_on(atom() | pid() | {atom(), any()} | {:via, atom(), any()}, any()) :: :ok
   @doc """
   Turns blinking on for the 7-segment display.
 
@@ -287,10 +286,10 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.blinking_on(:red_leds, 1)
   """
   @doc since: "0.1.0"
+  @spec blinking_on(atom() | pid() | {atom(), any()} | {:via, atom(), any()}, any()) :: :ok
   def blinking_on(name \\ __MODULE__, speed \\ 0),
     do: GenServer.cast(name, {:blinking_on, speed})
 
-  @spec blinking_on_all(any(), any()) :: list()
   @doc """
   Sets blinking on for all displays.
 
@@ -308,11 +307,11 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.blinking_on_all([:blue_leds, :red_leds], 1)
   """
   @doc since: "0.1.0"
+  @spec blinking_on_all(any(), any()) :: list()
   def blinking_on_all(devices_names, speed \\ 0) do
     devices_names |> Enum.map(fn device -> Ht16k33Multi.blinking_on(device, speed) end)
   end
 
-  @spec blinking_off(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   @doc """
   Sets blinking off for the 7-segment display.
 
@@ -325,9 +324,9 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.blinking_off(:red_leds)
   """
   @doc since: "0.1.0"
+  @spec blinking_off(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   def blinking_off(name \\ __MODULE__), do: GenServer.cast(name, :blinking_off)
 
-  @spec blinking_off_all(any()) :: list()
   @doc """
   Sets blinking off for all displays.
 
@@ -343,11 +342,11 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.blinking_off_all([:blue_leds, :red_leds])
   """
   @doc since: "0.1.0"
+  @spec blinking_off_all(any()) :: list()
   def blinking_off_all(devices_names) do
     devices_names |> Enum.map(fn device -> Ht16k33Multi.blinking_off(device) end)
   end
 
-  @spec dimming(any(), atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   @doc """
   Sets the dimming level (brightness) of the display.
 
@@ -363,9 +362,9 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.dimming(8, :red_leds)
   """
   @doc since: "0.1.0"
+  @spec dimming(any(), atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   def dimming(value, name \\ __MODULE__), do: GenServer.cast(name, {:dimming, value})
 
-  @spec dimming_all(any(), any()) :: list()
   @doc """
   Dims all displays with the same value.
 
@@ -384,6 +383,7 @@ defmodule Ht16k33Multi do
       Ht16k33Multi.dimming_all(8, [:blue_leds, :red_leds])
   """
   @doc since: "0.1.0"
+  @spec dimming_all(any(), any()) :: list()
   def dimming_all(value, devices_names) do
     devices_names |> Enum.map(fn device -> Ht16k33Multi.dimming(value, device) end)
   end
