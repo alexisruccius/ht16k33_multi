@@ -24,3 +24,12 @@ ht16k33-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# datasheet
+/datasheet/
+
+# organising
+/organising/
+
+# pdf
+*.pdf
