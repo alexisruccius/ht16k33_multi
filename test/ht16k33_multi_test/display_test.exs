@@ -11,7 +11,7 @@ defmodule Ht16k33MultiTest.DisplayTest do
 
   describe "colon_on/0" do
     test "colon on command" do
-      assert Display.colon_on() == <<0x04, 0x01>>
+      assert Display.colon_on() == <<0x04, 0x02>>
     end
   end
 

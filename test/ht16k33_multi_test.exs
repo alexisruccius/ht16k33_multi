@@ -225,4 +225,56 @@ defmodule Ht16k33MultiTest do
       assert Ht16k33Multi.blinking_off_all(devices) == [:ok, :ok, :ok]
     end
   end
+
+  describe "colon_on/1" do
+    test "colon on command succeeds" do
+      address = 0x72
+      start_supervised({Ht16k33Multi, name: :green_leds, address: address})
+      Ht16k33Multi.colon_on(:green_leds)
+
+      assert %Ht16k33Multi{
+               name: :green_leds,
+               last_command: %I2cBus{command: <<0x04, 0x02>>, exit_status: :ok}
+             } = :sys.get_state(:green_leds)
+    end
+  end
+
+  describe "colon_off/1" do
+    test "colon off command succeeds" do
+      address = 0x72
+      start_supervised({Ht16k33Multi, name: :green_leds, address: address})
+      Ht16k33Multi.colon_off(:green_leds)
+
+      assert %Ht16k33Multi{
+               name: :green_leds,
+               last_command: %I2cBus{command: <<0x04, 0x00>>, exit_status: :ok}
+             } = :sys.get_state(:green_leds)
+    end
+  end
+
+  describe "colon_on_all/1" do
+    test "write to three displays and set colon on for all" do
+      devices = [:red, :green, :blue]
+      devices_address = [red: 0x70, green: 0x71, blue: 0x72]
+
+      for {device, address} <- devices_address do
+        start_supervised({Ht16k33Multi, name: device, address: address})
+      end
+
+      assert Ht16k33Multi.colon_on_all(devices) == [:ok, :ok, :ok]
+    end
+  end
+
+  describe "colon_off_all/1" do
+    test "write to three displays and set colon off for all" do
+      devices = [:red, :green, :blue]
+      devices_address = [red: 0x70, green: 0x71, blue: 0x72]
+
+      for {device, address} <- devices_address do
+        start_supervised({Ht16k33Multi, name: device, address: address})
+      end
+
+      assert Ht16k33Multi.colon_off_all(devices) == [:ok, :ok, :ok]
+    end
+  end
 end

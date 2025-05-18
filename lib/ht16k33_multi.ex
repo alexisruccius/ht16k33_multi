@@ -388,6 +388,74 @@ defmodule Ht16k33Multi do
     devices_names |> Enum.map(fn device -> Ht16k33Multi.dimming(value, device) end)
   end
 
+  @doc """
+  Sets colon on for the 7-segment display.
+
+    * `name` – The GenServer name of the device.
+      This should match the name provided to `Ht16k33Multi.start_link/1`,
+      e.g., `Ht16k33Multi.start_link(name: :red_leds)`.
+
+  ## Examples
+
+      Ht16k33Multi.colon_on(:red_leds)
+  """
+  @doc since: "0.2.0"
+  @spec colon_on(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
+  def colon_on(name \\ __MODULE__), do: GenServer.cast(name, :colon_on)
+
+  @doc """
+  Sets colon on for all displays.
+
+    * `devices_names` – A list of GenServer names that identify the displays.
+      These names should match those provided to `Ht16k33Multi.start_link/1`,
+      e.g., `[:blue_leds, :red_leds]`.
+
+  This function calls `colon_on/1` for each device in the list,
+  setting the colon on for all of them.
+
+  ## Examples
+
+      Ht16k33Multi.colon_on_all([:blue_leds, :red_leds])
+  """
+  @doc since: "0.2.0"
+  @spec colon_on_all(any()) :: list()
+  def colon_on_all(devices_names),
+    do: devices_names |> Enum.map(fn device -> Ht16k33Multi.colon_on(device) end)
+
+  @doc """
+  Sets colon off for the 7-segment display.
+
+    * `name` – The GenServer name of the device.
+      This should match the name provided to `Ht16k33Multi.start_link/1`,
+      e.g., `Ht16k33Multi.start_link(name: :red_leds)`.
+
+  ## Examples
+
+      Ht16k33Multi.colon_off(:red_leds)
+  """
+  @doc since: "0.2.0"
+  @spec colon_off(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
+  def colon_off(name \\ __MODULE__), do: GenServer.cast(name, :colon_off)
+
+  @doc """
+  Sets colon off for all displays.
+
+    * `devices_names` – A list of GenServer names that identify the displays.
+      These names should match those provided to `Ht16k33Multi.start_link/1`,
+      e.g., `[:blue_leds, :red_leds]`.
+
+  This function calls `colon_off/1` for each device in the list,
+  setting the colon off for all of them.
+
+  ## Examples
+
+      Ht16k33Multi.colon_off_all([:blue_leds, :red_leds])
+  """
+  @doc since: "0.2.0"
+  @spec colon_off_all(any()) :: list()
+  def colon_off_all(devices_names),
+    do: devices_names |> Enum.map(fn device -> Ht16k33Multi.colon_off(device) end)
+
   # server callbacks
 
   @impl true
@@ -418,4 +486,12 @@ defmodule Ht16k33Multi do
   @impl true
   def handle_cast({:dimming, value}, %__MODULE__{} = ht16k33),
     do: {:noreply, Display.Dimming.set(value) |> I2cBus.write(ht16k33)}
+
+  @impl true
+  def handle_cast(:colon_on, %__MODULE__{} = ht16k33),
+    do: {:noreply, Display.colon_on() |> I2cBus.write(ht16k33)}
+
+  @impl true
+  def handle_cast(:colon_off, %__MODULE__{} = ht16k33),
+    do: {:noreply, Display.colon_off() |> I2cBus.write(ht16k33)}
 end

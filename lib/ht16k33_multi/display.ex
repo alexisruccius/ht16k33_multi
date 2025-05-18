@@ -89,7 +89,7 @@ defmodule Ht16k33Multi.Display do
   """
   @doc since: "0.1.0"
   @spec colon_on() :: <<_::16>>
-  def colon_on(), do: <<@colon_position, 0x01>>
+  def colon_on(), do: <<@colon_position, 0x02>>
 
   @doc """
   Command to turn the colon off.
