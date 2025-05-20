@@ -31,7 +31,7 @@ defmodule Ht16k33Multi.MixProject do
   defp deps do
     [
       {:circuits_i2c, "~> 2.0"},
-      {:circuits_sim, "~> 0.1.1"},
+      {:circuits_sim, "~> 0.1.1", only: [:dev, :test]},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
@@ -43,7 +43,7 @@ defmodule Ht16k33Multi.MixProject do
       # The main page in the docs
       main: "Ht16k33Multi",
       logo: "assets/ht16k33multi-logo.jpg",
-      extras: ["README.md"]
+      extras: ["README.md", "CHANGELOG.md"]
     ]
   end
 
@@ -52,7 +52,8 @@ defmodule Ht16k33Multi.MixProject do
     [
       maintainers: ["Alexis Ruccius"],
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" => "https://github.com/alexisruccius/ht16k33_multi"}
+      links: %{"GitHub" => "https://github.com/alexisruccius/ht16k33_multi"},
+      files: ~w(lib .formatter.exs mix.exs README.md LICENSE CHANGELOG.md)
     ]
   end
 end
