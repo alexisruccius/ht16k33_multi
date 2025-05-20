@@ -14,11 +14,14 @@ defmodule Ht16k33Multi.Display do
 
       Display.blincking_off() |> I2cBus.write(%Ht16k33{} = state)
 
-    > 💡 To simplify usage, please use the `Ht16k33Multi` GenServer module,
-    such as calling `Ht16k33Multi.blinking_on()` for ease of interaction.
+    > #### use `Ht16k33Multi` {: .tip}
+    > To simplify usage, please use the `Ht16k33Multi` GenServer module,
+    > such as calling `Ht16k33Multi.blinking_on()` for ease of interaction.
 
-    > 💡 **Note**: The display needs to be initialized before anything can be shown.
-    For initialization instructions, please refer to the documentation for `Ht16k33Multi.Display.initialize/0`.
+    > #### Display needs to be initialized {: .info}
+    > The display needs to be initialized before anything can be shown.
+    > For initialization instructions, please refer to the documentation for `Ht16k33Multi.Display.initialize/0`.
+
 
 
   ## Display positions and colon

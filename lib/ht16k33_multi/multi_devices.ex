@@ -10,8 +10,9 @@ defmodule Ht16k33Multi.MultiDevices do
 
   ## Usage
 
-    > 💡 To simplify usage, please use the `Ht16k33Multi` GenServer module,
-    such as calling `Ht16k33Multi.write_to_all/3` for ease of interaction.
+    > #### use `Ht16k33Multi` {: .tip}
+    > To simplify usage, please use the `Ht16k33Multi` GenServer module,
+    > such as calling `Ht16k33Multi.write_to_all/3` for ease of interaction.
 
 
   Each display should be started with a unique name using `Ht16k33Multi.start_link(name: :device_name)`.

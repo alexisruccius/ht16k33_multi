@@ -4,6 +4,10 @@ defmodule Ht16k33Multi.Display.Dimming do
 
   The Ht16k33 supports setting the dimming level, but it does not support reading it back.
 
+    > #### use `Ht16k33Multi` {: .tip}
+    > To simplify usage, please use the `Ht16k33Multi` GenServer module,
+    > such as calling `Ht16k33Multi.dimming(6)` for ease of interaction.
+
   ### Dimming Command Format
 
       Dimming command

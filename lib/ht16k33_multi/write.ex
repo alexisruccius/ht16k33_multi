@@ -9,8 +9,9 @@ defmodule Ht16k33Multi.Write do
   to the correct position address. It outputs the data format expected by the `Ht16k33` device
   for writing via the I2C bus.
 
-    > 💡 To simplify usage, please use the `Ht16k33Multi` GenServer module,
-    such as calling `Ht16k33Multi.write/1` for ease of interaction.
+    > #### use `Ht16k33Multi` {: .tip}
+    > To simplify usage, please use the `Ht16k33Multi` GenServer module,
+    > such as calling `Ht16k33Multi.write/1` for ease of interaction.
   """
   @moduledoc since: "0.1.0"
 
@@ -26,8 +27,9 @@ defmodule Ht16k33Multi.Write do
 
   The output is a list of bitstrings formatted for writing to the display using the `I2cBus` module.
 
-    > 💡 To simplify usage, please use the `Ht16k33Multi` GenServer module,
-    such as calling `Ht16k33Multi.write/1` for ease of interaction.
+    > #### use `Ht16k33Multi` {: .tip}
+    > To simplify usage, please use the `Ht16k33Multi` GenServer module,
+    > such as calling `Ht16k33Multi.write/1` for ease of interaction.
 
   ## Example
 

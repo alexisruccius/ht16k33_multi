@@ -30,7 +30,9 @@ defmodule Ht16k33Multi.I2cBus do
       Devices on I2C bus "i2c-1":
       * 112 (0x70)
 
-  > 💡 **Note**: Displays must be initialized before writing. See `Ht16k33Multi.Display.initialize/0`.
+    > #### Display needs to be initialized {: .info}
+    > The display needs to be initialized before anything can be shown.
+    > For initialization instructions, please refer to the documentation for `Ht16k33Multi.Display.initialize/0`.
 
   ## Using This Module
 

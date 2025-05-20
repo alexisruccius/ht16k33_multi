@@ -78,7 +78,9 @@ See the [list of supported targets](https://hexdocs.pm/nerves/supported-targets.
     ]
     ```
 
-    > 💡 See the [Device Address](#device-address) section to learn how to detect your I²C bus and device address.
+
+      > #### Detect I2C Bus and Device Address {: .tip}
+      > See the [Device Address](#device-address) section to learn how to detect your I²C bus and device address.
 
 5. **Write to the display**
 

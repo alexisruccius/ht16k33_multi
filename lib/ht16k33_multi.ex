@@ -36,7 +36,7 @@ defmodule Ht16k33Multi do
       # mix.exs
       defp deps do
         [
-          {:ht16k33_multi, "~> 0.1"}
+          {:ht16k33_multi, "~> 0.2"}
         ]
       end
       ```
@@ -77,7 +77,9 @@ defmodule Ht16k33Multi do
       ]
       ```
 
-      > 💡 See the [Device Address](#module-device-address) section to learn how to detect your I²C bus and device address.
+      > #### Detect I2C Bus and Device Address {: .tip}
+      > See the [Device Address](#module-device-address) section to learn how to detect your I²C bus and device address.
+
 
   5. **Write to the display**
 

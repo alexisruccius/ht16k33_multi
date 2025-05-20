@@ -3,6 +3,10 @@ defmodule Ht16k33Multi.Display.Blinking do
   Provides commands to control blinking on the entire display.
 
   You can enable blinking at different frequencies or disable it entirely.
+
+    > #### use `Ht16k33Multi` {: .tip}
+    > To simplify usage, please use the `Ht16k33Multi` GenServer module,
+    > such as calling `Ht16k33Multi.blinking_on()` for ease of interaction.
   """
   @moduledoc since: "0.1.0"
 
