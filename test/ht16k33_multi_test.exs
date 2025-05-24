@@ -42,6 +42,20 @@ defmodule Ht16k33MultiTest do
     end
   end
 
+  describe "init/1" do
+    test "when GenServer initilizes it clears the display" do
+      address = 0x71
+      start_supervised({Ht16k33Multi, name: :blue_leds, address: address})
+
+      # cf. Ht16k33.Display.clear/0
+      clear_command = <<0, 0, 2, 0, 6, 0, 8, 0, 4, 0>>
+
+      assert %Ht16k33Multi{last_command: last_command} = :sys.get_state(:blue_leds)
+      assert %I2cBus{command: command} = last_command
+      assert clear_command == command
+    end
+  end
+
   describe "status/1" do
     test "gets the status for different GenServer names" do
       address = 0x70

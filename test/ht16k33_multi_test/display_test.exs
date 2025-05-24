@@ -3,6 +3,16 @@ defmodule Ht16k33MultiTest.DisplayTest do
 
   alias Ht16k33Multi.Display
 
+  describe "initialize/0" do
+    test "turns on oscillation and clears all segments command" do
+      oscillation = 0x21
+      display_on = 0x81
+      clear_command = <<0, 0, 2, 0, 6, 0, 8, 0, 4, 0>>
+
+      assert Display.initialize() == [oscillation, display_on, clear_command]
+    end
+  end
+
   describe "oscillation_on/0" do
     test "oscillation_on command" do
       assert Display.oscillation_on() == 0x21
