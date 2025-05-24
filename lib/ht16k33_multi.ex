@@ -151,7 +151,7 @@ defmodule Ht16k33Multi do
 
   alias Ht16k33Multi.{Display, I2cBus, MultiDevices, Write}
 
-  defstruct name: nil, i2c_ref: nil, address: nil, last_command: nil
+  defstruct name: nil, i2c_ref: nil, address: nil, last_command: %I2cBus{}
 
   @i2c_bus "i2c-1"
   @address 0x70
