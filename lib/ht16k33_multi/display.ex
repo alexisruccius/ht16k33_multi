@@ -58,13 +58,13 @@ defmodule Ht16k33Multi.Display do
 
   @doc """
   Initialize the display by enabling the oscillation, turning the display on,
-  and ensuring the colon is off for a clean display of text.
+  and ensuring the colon and all LED segments are off for a clean display of text.
 
   This is required to begin displaying something on the `Ht16k33`.
   """
   @doc since: "0.1.0"
   @spec initialize() :: [<<_::16>> | 33 | 129, ...]
-  def initialize(), do: [oscillation_on(), display_on(), colon_off()]
+  def initialize(), do: [oscillation_on(), display_on(), clear()]
 
   @doc """
   Command to start the oscillation, which is necessary for initialization.
