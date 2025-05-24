@@ -3,7 +3,25 @@ defmodule Ht16k33MultiTest.DisplayTest do
 
   alias Ht16k33Multi.Display
 
-  describe "all.positions/0" do
+  describe "oscillation_on/0" do
+    test "oscillation_on command" do
+      assert Display.oscillation_on() == 0x21
+    end
+  end
+
+  describe "display_on/0" do
+    test "display_on command" do
+      assert Display.display_on() == 0x81
+    end
+  end
+
+  describe "display_off/0" do
+    test "display_off command" do
+      assert Display.display_off() == 0x80
+    end
+  end
+
+  describe "all_positions/0" do
     test "display_position to command" do
       assert Display.all_positions() == [0x00, 0x02, 0x06, 0x08]
     end
