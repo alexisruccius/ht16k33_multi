@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.1 (2025-05-24)
+
+### Fixed
+
+- Fixed a bug where the initial `Ht16k33Multi.init/0` GenServer start did not clear all LED segments.
+The display now correctly initializes via `Display.initialize().`
+
+
 ## v0.2.0 (2025-05-19)
 
 ### Enhancements

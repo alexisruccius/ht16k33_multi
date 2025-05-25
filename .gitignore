@@ -33,3 +33,9 @@ ht16k33-*.tar
 
 # pdf
 *.pdf
+
+# IDE
+.vscode/
+
+# asdf
+.tool-versions

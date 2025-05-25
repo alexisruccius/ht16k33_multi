@@ -4,7 +4,7 @@ defmodule Ht16k33Multi.MixProject do
   def project do
     [
       app: :ht16k33_multi,
-      version: "0.2.0",
+      version: "0.2.1",
       description:
         "A library for controlling one or more Ht16k33 microchips, which are commonly used to drive 7-segment displays.",
       elixir: "~> 1.17",

@@ -1,6 +1,8 @@
 # Ht16k33Multi
 
 [![Build Status](https://github.com/alexisruccius/ht16k33_multi/workflows/CI/badge.svg)](https://github.com/alexisruccius/ht16k33_multi/actions/workflows/CI.yml)
+[![Hex.pm](https://img.shields.io/hexpm/v/ht16k33_multi.svg)](https://hex.pm/packages/ht16k33_multi)
+[![API docs](https://img.shields.io/hexpm/v/ht16k33_multi.svg?label=hexdocs "API docs")](https://hexdocs.pm/ht16k33_multi)
 
 `Ht16k33Multi` is a library for controlling one or more `Ht16k33` microchips,
 which are commonly used to drive 7-segment displays, such as these shown below:
@@ -39,7 +41,7 @@ See the [list of supported targets](https://hexdocs.pm/nerves/supported-targets.
     # mix.exs
     defp deps do
       [
-        {:ht16k33_multi, "~> 0.2"}
+        {:ht16k33_multi, "~> 0.2.1"}
       ]
     end
     ```

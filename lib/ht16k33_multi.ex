@@ -36,7 +36,7 @@ defmodule Ht16k33Multi do
       # mix.exs
       defp deps do
         [
-          {:ht16k33_multi, "~> 0.2"}
+          {:ht16k33_multi, "~> 0.2.1"}
         ]
       end
       ```
