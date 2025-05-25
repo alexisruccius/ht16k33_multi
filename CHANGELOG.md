@@ -4,8 +4,8 @@
 
 ### Fixed
 
-- Fixed a bug where the initial `Ht16k33Multi.init/0` GenServer start did not clear all LED segments.
-The display now correctly initializes via `Display.initialize().`
+- Fixed a bug where the initial `Ht16k33Multi` GenServer start did not clear all LED segments.
+The display now correctly initializes via `Ht16k33Multi.Display.initialize/0`.
 
 
 ## v0.2.0 (2025-05-19)
