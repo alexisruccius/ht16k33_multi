@@ -1,5 +1,7 @@
 # Ht16k33Multi
 
+[![Build Status](https://github.com/alexisruccius/ht16k33_multi/workflows/CI/badge.svg)](https://github.com/alexisruccius/ht16k33_multi/actions/workflows/CI.yml)
+
 `Ht16k33Multi` is a library for controlling one or more `Ht16k33` microchips,
 which are commonly used to drive 7-segment displays, such as these shown below:
 
