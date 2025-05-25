@@ -31,7 +31,7 @@ defmodule Ht16k33Multi.MixProject do
   defp deps do
     [
       {:circuits_i2c, "~> 2.0"},
-      {:circuits_sim, "~> 0.1.1", only: [:dev, :test]},
+      {:circuits_sim, "~> 0.1.1"},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
