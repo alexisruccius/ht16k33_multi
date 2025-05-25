@@ -41,7 +41,7 @@ See the [list of supported targets](https://hexdocs.pm/nerves/supported-targets.
     # mix.exs
     defp deps do
       [
-        {:ht16k33_multi, "~> 0.2.1"}
+        {:ht16k33_multi, "~> 0.2.2"}
       ]
     end
     ```

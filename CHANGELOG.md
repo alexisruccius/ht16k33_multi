@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.2 (2025-05-25)
+
+### Fixed
+
+- Resolved issue with incorrect dependency fetching.
+
+
 ## v0.2.1 (2025-05-24)
 
 ### Fixed
