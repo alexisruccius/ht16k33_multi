@@ -4,6 +4,7 @@
 [![Hex.pm](https://img.shields.io/hexpm/v/ht16k33_multi.svg)](https://hex.pm/packages/ht16k33_multi)
 [![API docs](https://img.shields.io/hexpm/v/ht16k33_multi.svg?label=hexdocs "API docs")](https://hexdocs.pm/ht16k33_multi)
 [![Hex Downloads](https://img.shields.io/hexpm/dt/ht16k33_multi)](https://hex.pm/packages/ht16k33_Multi)
+[![Last Updated](https://img.shields.io/github/last-commit/alexisruccius/ht16k33_multi.svg)](https://github.com/alexisruccius/ht16k33_multi/commits/master)
 [![GitHub stars](https://img.shields.io/github/stars/alexisruccius/ht16k33_multi.svg)](https://github.com/alexisruccius/ht16k33_multi/stargazers)
 
 
