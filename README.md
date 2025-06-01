@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/alexisruccius/ht16k33_multi/workflows/CI/badge.svg)](https://github.com/alexisruccius/ht16k33_multi/actions/workflows/CI.yml)
 [![Hex.pm](https://img.shields.io/hexpm/v/ht16k33_multi.svg)](https://hex.pm/packages/ht16k33_multi)
 [![API docs](https://img.shields.io/hexpm/v/ht16k33_multi.svg?label=hexdocs "API docs")](https://hexdocs.pm/ht16k33_multi)
-[![Hex Downloads](https://img.shields.io/hexpm/dt/ht16k33_multi)](https://hex.pm/packages/ht16k33_Multi)
+[![Hex Downloads](https://img.shields.io/hexpm/dt/ht16k33_multi)](https://hex.pm/packages/ht16k33_multi)
 [![Last Updated](https://img.shields.io/github/last-commit/alexisruccius/ht16k33_multi.svg)](https://github.com/alexisruccius/ht16k33_multi/commits/master)
 [![GitHub stars](https://img.shields.io/github/stars/alexisruccius/ht16k33_multi.svg)](https://github.com/alexisruccius/ht16k33_multi/stargazers)
 
@@ -159,3 +159,4 @@ This library has been tested with the **Adafruit 7-Segment LED HT16K33 Backpack*
 ## Documentation
 
 The docs can be found at <https://hexdocs.pm/ht16k33_multi>.
+
