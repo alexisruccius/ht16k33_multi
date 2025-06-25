@@ -10,6 +10,12 @@ defmodule Ht16k33Multi.MixProject do
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      test_coverage: [
+        ignore_modules: [
+          Ht16k33Multi.CircuitSimMock.Ht16k33Mock,
+          CircuitsSim.I2C.SimpleI2CDevice.Ht16k33Multi.CircuitSimMock.Ht16k33Mock
+        ]
+      ],
 
       # ExDocs
       source_url: "https://github.com/alexisruccius/ht16k33_multi",

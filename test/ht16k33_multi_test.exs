@@ -15,6 +15,11 @@ defmodule Ht16k33MultiTest do
   end
 
   describe "start_link/1" do
+    test "Ht16k33 GenServers starts" do
+      Ht16k33Multi.start_link()
+      assert %Ht16k33Multi{name: Ht16k33Multi} = :sys.get_state(Ht16k33Multi)
+    end
+
     test "multiple Ht16k33 GenServers can be started with different names" do
       start_supervised({Ht16k33Multi, name: :yellow_leds})
       assert %Ht16k33Multi{name: :yellow_leds} = :sys.get_state(:yellow_leds)
