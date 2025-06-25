@@ -43,9 +43,6 @@ defmodule Ht16k33Multi.Write do
   """
   @doc since: "0.1.0"
   @spec to_display(binary() | integer()) :: list()
-  def to_display(character) when byte_size(character) <= 1,
-    do: to_display(character <> "   ")
-
   def to_display(characters) do
     [Display.all_positions(), Font.segments(characters) |> check_4_elements()]
     |> Enum.zip()
@@ -63,6 +60,7 @@ defmodule Ht16k33Multi.Write do
       3 -> char_list ++ space_char
       2 -> char_list ++ space_char ++ space_char
       1 -> char_list ++ space_char ++ space_char ++ space_char
+      0 -> space_char ++ space_char ++ space_char ++ space_char
     end
   end
 
