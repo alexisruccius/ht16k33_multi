@@ -1,10 +1,16 @@
 defmodule Ht16k33Multi do
   @moduledoc """
+  [![Build Status](https://github.com/alexisruccius/ht16k33_multi/workflows/CI/badge.svg)](https://github.com/alexisruccius/ht16k33_multi/actions/workflows/CI.yml)
+  [![Hex.pm](https://img.shields.io/hexpm/v/ht16k33_multi.svg)](https://hex.pm/packages/ht16k33_multi)
+  [![API docs](https://img.shields.io/hexpm/v/ht16k33_multi.svg?label=hexdocs "API docs")](https://hexdocs.pm/ht16k33_multi)
+  [![Hex Downloads](https://img.shields.io/hexpm/dt/ht16k33_multi)](https://hex.pm/packages/ht16k33_multi)
+  [![Last Updated](https://img.shields.io/github/last-commit/alexisruccius/ht16k33_multi.svg)](https://github.com/alexisruccius/ht16k33_multi/commits/master)
+  [![GitHub stars](https://img.shields.io/github/stars/alexisruccius/ht16k33_multi.svg)](https://github.com/alexisruccius/ht16k33_multi/stargazers)
+
   `Ht16k33Multi` is a library for controlling one or more `Ht16k33` microchips,
   which are commonly used to drive 7-segment displays, such as these shown below:
 
   ![Image of Ht16k33 7-segment display](assets/ht16k33multi-7-segment-love-elixir.jpg)
-
 
   ## Features
 
@@ -15,7 +21,6 @@ defmodule Ht16k33Multi do
   - Supporting multiple displays (hence the "multi" in the library name).
     You can easily chain multiple `Ht16k33` devices to display full sentences or other content across them.
   - Utilizing the built-in blinking and dimming features of the `Ht16k33` microchip
-
 
   ## Usage
 
@@ -80,7 +85,6 @@ defmodule Ht16k33Multi do
       > #### Detect I2C Bus and Device Address {: .tip}
       > See the [Device Address](#module-device-address) section to learn how to detect your I²C bus and device address.
 
-
   5. **Write to the display**
 
       Display a message:
@@ -101,7 +105,6 @@ defmodule Ht16k33Multi do
       iex> Ht16k33Multi.dimming(6)
       ```
 
-
   ## Connect the Device to the I2C Bus and Power
 
   ### Using Qwiic with a Raspberry Pi Zero (rpi0)
@@ -116,7 +119,6 @@ defmodule Ht16k33Multi do
   | Red        | 3.3V               | 4                     | 5V        |
   | Blue       | SDA (Serial Data)  | 3                     | GPIO2     |
   | Yellow     | SCL (Serial Clock) | 5                     | GPIO3     |
-
 
   ![HT16K33 7-segment display with I²C Qwiic connection to a Raspberry Pi Zero](assets/ht16k33-7-segment-i2c-qwiic-connection-to-rpi0.jpg)
 
