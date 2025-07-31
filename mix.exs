@@ -39,7 +39,8 @@ defmodule Ht16k33Multi.MixProject do
       {:circuits_i2c, "~> 2.0"},
       {:circuits_sim, "~> 0.1.1"},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
