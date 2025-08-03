@@ -141,7 +141,7 @@ defmodule Ht16k33Multi do
 
   See the [HT16K33 datasheet](https://www.holtek.com/webapi/116711/HT16K33Av102.pdf) for more details.
 
-  ![HT16K33 7-segment backside with address pins and I²C Qwiic connection](assets/ht16k33-backside.jpg)
+
 
   ## Testing
 
@@ -151,13 +151,23 @@ defmodule Ht16k33Multi do
 
   use GenServer
 
-  alias Ht16k33Multi.{Display, I2cBus, MultiDevices, Write}
+  alias Ht16k33Multi.Display
+  alias Ht16k33Multi.I2cBus
+  alias Ht16k33Multi.MultiDevices
+  alias Ht16k33Multi.Write
 
+  @type t() :: %__MODULE__{
+          name: atom() | pid() | {atom(), any()} | {:via, atom(), any()},
+          i2c_ref: reference(),
+          address: number(),
+          last_command: I2cBus.t()
+        }
   defstruct name: nil, i2c_ref: nil, address: nil, last_command: %I2cBus{}
 
   @i2c_bus "i2c-1"
   @address 0x70
 
+  @spec child_spec(list()) :: Supervisor.child_spec()
   def child_spec(options) do
     %{id: Keyword.get(options, :name, __MODULE__), start: {__MODULE__, :start_link, [options]}}
   end
@@ -222,7 +232,7 @@ defmodule Ht16k33Multi do
   ```
   """
   @doc since: "0.1.0"
-  @spec status(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: %Ht16k33Multi{}
+  @spec status(atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: t()
   def status(name \\ __MODULE__), do: GenServer.call(name, :status)
 
   @doc """
@@ -268,7 +278,8 @@ defmodule Ht16k33Multi do
   @doc since: "0.1.0"
   @spec write_to_all(binary(), list(), keyword()) :: list()
   def write_to_all(characters, devices_names, option \\ []) do
-    MultiDevices.split_for_devices(characters, devices_names, option)
+    characters
+    |> MultiDevices.split_for_devices(devices_names, option)
     |> Enum.map(fn {device, word} -> Ht16k33Multi.write(word, device) end)
   end
 
@@ -462,7 +473,7 @@ defmodule Ht16k33Multi do
 
   # server callbacks
 
-  @impl true
+  @impl GenServer
   def init({name, i2c_bus, address}) do
     {:ok, i2c_ref} = I2cBus.open(i2c_bus)
     ht16k33 = %__MODULE__{name: name, i2c_ref: i2c_ref, address: address}
@@ -470,32 +481,32 @@ defmodule Ht16k33Multi do
     {:ok, Display.initialize() |> I2cBus.write(ht16k33)}
   end
 
-  @impl true
+  @impl GenServer
   def handle_call(:status, _from, %__MODULE__{} = ht16k33), do: {:reply, ht16k33, ht16k33}
 
-  @impl true
+  @impl GenServer
   def handle_cast({:write, characters}, %__MODULE__{} = ht16k33) do
     Display.clear() |> I2cBus.write(ht16k33)
-    {:noreply, Write.to_display(characters) |> I2cBus.write(ht16k33)}
+    {:noreply, characters |> Write.to_display() |> I2cBus.write(ht16k33)}
   end
 
-  @impl true
+  @impl GenServer
   def handle_cast({:blinking_on, speed}, %__MODULE__{} = ht16k33),
-    do: {:noreply, Display.blinking_on(speed) |> I2cBus.write(ht16k33)}
+    do: {:noreply, speed |> Display.blinking_on() |> I2cBus.write(ht16k33)}
 
-  @impl true
+  @impl GenServer
   def handle_cast(:blinking_off, %__MODULE__{} = ht16k33),
     do: {:noreply, Display.blinking_off() |> I2cBus.write(ht16k33)}
 
-  @impl true
+  @impl GenServer
   def handle_cast({:dimming, value}, %__MODULE__{} = ht16k33),
-    do: {:noreply, Display.Dimming.set(value) |> I2cBus.write(ht16k33)}
+    do: {:noreply, value |> Display.Dimming.set() |> I2cBus.write(ht16k33)}
 
-  @impl true
+  @impl GenServer
   def handle_cast(:colon_on, %__MODULE__{} = ht16k33),
     do: {:noreply, Display.colon_on() |> I2cBus.write(ht16k33)}
 
-  @impl true
+  @impl GenServer
   def handle_cast(:colon_off, %__MODULE__{} = ht16k33),
     do: {:noreply, Display.colon_off() |> I2cBus.write(ht16k33)}
 end

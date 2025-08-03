@@ -73,5 +73,7 @@ defmodule Ht16k33Multi.MultiDevices do
   defp joint(devices_names, chunks) when length(devices_names) < length(chunks),
     do: joint(devices_names, chunks |> Enum.take(length(devices_names)))
 
+  # order matters (also from chunks before), therefor ->
+  # credo:disable-for-next-line
   defp joint(devices_names, chunks), do: joint(devices_names, chunks ++ ["    "])
 end

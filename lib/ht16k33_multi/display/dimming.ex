@@ -32,26 +32,23 @@ defmodule Ht16k33Multi.Display.Dimming do
   """
   @doc since: "0.1.0"
   @spec set(integer()) :: <<_::8>>
-  def set(value) do
-    case value do
-      0 -> <<0xE0>>
-      1 -> <<0xE0>>
-      2 -> <<0xE1>>
-      3 -> <<0xE2>>
-      4 -> <<0xE3>>
-      5 -> <<0xE4>>
-      6 -> <<0xE5>>
-      7 -> <<0xE6>>
-      8 -> <<0xE7>>
-      9 -> <<0xE8>>
-      10 -> <<0xE9>>
-      11 -> <<0xEA>>
-      12 -> <<0xEB>>
-      13 -> <<0xEC>>
-      14 -> <<0xED>>
-      15 -> <<0xEE>>
-      16 -> <<0xEF>>
-      _ -> <<0xEF>>
-    end
-  end
+  def set(value)
+  def set(0), do: <<0xE0>>
+  def set(1), do: <<0xE0>>
+  def set(2), do: <<0xE1>>
+  def set(3), do: <<0xE2>>
+  def set(4), do: <<0xE3>>
+  def set(5), do: <<0xE4>>
+  def set(6), do: <<0xE5>>
+  def set(7), do: <<0xE6>>
+  def set(8), do: <<0xE7>>
+  def set(9), do: <<0xE8>>
+  def set(10), do: <<0xE9>>
+  def set(11), do: <<0xEA>>
+  def set(12), do: <<0xEB>>
+  def set(13), do: <<0xEC>>
+  def set(14), do: <<0xED>>
+  def set(15), do: <<0xEE>>
+  def set(16), do: <<0xEF>>
+  def set(_other), do: <<0xEF>>
 end

@@ -60,7 +60,7 @@ defmodule Ht16k33Multi.CircuitSimMock.Ht16k33Mock do
           :ipol => 0,
           :olat => 0
         }
-  def new() do
+  def new do
     %__MODULE__{
       iodir: 0xFF,
       ipol: 0,
@@ -89,7 +89,8 @@ defmodule Ht16k33Multi.CircuitSimMock.Ht16k33Mock do
     def write_register(state, 8, _value), do: state
 
     def write_register(state, 9, value) do
-      result = Bitwise.band(Bitwise.bnot(state.iodir), value)
+      result = state.iodir |> Bitwise.bnot() |> Bitwise.band(value)
+
       %{state | gpio: result, olat: result}
     end
 

@@ -46,10 +46,11 @@ defmodule Ht16k33Multi.I2cBus do
   """
   @moduledoc since: "0.1.0"
 
-  alias Ht16k33Multi
   alias Circuits.I2C
+  alias Ht16k33Multi
 
-  defstruct command: nil, exit_status: nil
+  @type t() :: %__MODULE__{command: bitstring(), exit_status: :ok | {:error, term()}}
+  defstruct command: "", exit_status: :ok
 
   @doc """
   Opens the specified I2C bus.
@@ -117,7 +118,7 @@ defmodule Ht16k33Multi.I2cBus do
       %Ht16k33Multi{address: 0x70, command: <<0, 119>>, exit_status: :ok, i2c_ref: #Reference<...>}
   """
   @doc since: "0.1.0"
-  @spec write(bitstring() | integer() | maybe_improper_list(), %Ht16k33Multi{}) :: %Ht16k33Multi{}
+  @spec write(bitstring() | integer() | list(), Ht16k33Multi.t()) :: Ht16k33Multi.t()
   def write(command, %Ht16k33Multi{} = ht16k33) when is_bitstring(command),
     do: execute(command, ht16k33)
 

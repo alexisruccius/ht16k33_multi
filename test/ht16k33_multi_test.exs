@@ -2,7 +2,7 @@ defmodule Ht16k33MultiTest do
   @moduledoc """
   Defined CircuitSim mocks in config/test.exs for addresses 0x70, 0x71, 0x72
   """
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Ht16k33Multi
   alias Ht16k33Multi.I2cBus

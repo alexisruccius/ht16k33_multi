@@ -15,7 +15,8 @@ defmodule Ht16k33Multi.Write do
   """
   @moduledoc since: "0.1.0"
 
-  alias Ht16k33Multi.{Display, Font}
+  alias Ht16k33Multi.Display
+  alias Ht16k33Multi.Font
 
   @doc """
   Converts a string or integer into a list of 7-segment display commands.
@@ -44,7 +45,7 @@ defmodule Ht16k33Multi.Write do
   @doc since: "0.1.0"
   @spec to_display(binary() | integer()) :: list()
   def to_display(characters) do
-    [Display.all_positions(), Font.segments(characters) |> check_4_elements()]
+    [Display.all_positions(), characters |> Font.segments() |> check_4_elements()]
     |> Enum.zip()
     |> Enum.map(&segment_on/1)
     |> List.flatten()

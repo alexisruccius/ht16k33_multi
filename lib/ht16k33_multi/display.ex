@@ -63,58 +63,58 @@ defmodule Ht16k33Multi.Display do
   This is required to begin displaying something on the `Ht16k33`.
   """
   @doc since: "0.1.0"
-  @spec initialize() :: [<<_::16>> | 33 | 129, ...]
-  def initialize(), do: [oscillation_on(), display_on(), clear()]
+  @spec initialize :: list(33 | 129 | bitstring())
+  def initialize, do: [oscillation_on(), display_on(), clear()]
 
   @doc """
   Command to start the oscillation, which is necessary for initialization.
   """
   @doc since: "0.1.0"
-  @spec oscillation_on() :: 33
-  def oscillation_on(), do: 0x21
+  @spec oscillation_on :: 33
+  def oscillation_on, do: 0x21
 
   @doc """
   Command to turn the display on.
   """
   @doc since: "0.1.0"
-  @spec display_on() :: 129
-  def display_on(), do: 0x81
+  @spec display_on :: 129
+  def display_on, do: 0x81
 
   @doc """
   Command to turn the display off.
   """
   @doc since: "0.1.0"
-  @spec display_off() :: 128
-  def display_off(), do: 0x80
+  @spec display_off :: 128
+  def display_off, do: 0x80
 
   @doc """
   Command to turn the colon on.
   """
   @doc since: "0.1.0"
-  @spec colon_on() :: <<_::16>>
-  def colon_on(), do: <<@colon_position, 0x02>>
+  @spec colon_on :: <<_::16>>
+  def colon_on, do: <<@colon_position, 0x02>>
 
   @doc """
   Command to turn the colon off.
   """
   @doc since: "0.1.0"
-  @spec colon_off() :: <<_::16>>
-  def colon_off(), do: <<@colon_position, 0x00>>
+  @spec colon_off :: <<_::16>>
+  def colon_off, do: <<@colon_position, 0x00>>
 
   @doc """
   Retrieve all display position values as a list,
   based on this module documentation (`Ht16k33Multi.Display`).
   """
   @doc since: "0.1.0"
-  @spec all_positions() :: list()
-  def all_positions(), do: @display_positions |> Map.values()
+  @spec all_positions :: list()
+  def all_positions, do: @display_positions |> Map.values()
 
   @doc """
   Clear the display by turning off all LED segments.
   """
   @doc since: "0.1.0"
-  @spec clear() :: binary()
-  def clear(), do: (all_positions() |> Enum.map(&clear/1) |> List.to_string()) <> colon_off()
+  @spec clear :: bitstring()
+  def clear, do: (all_positions() |> Enum.map(&clear/1) |> List.to_string()) <> colon_off()
   defp clear(position), do: <<position, 0x00>>
 
   @doc """
@@ -135,6 +135,6 @@ defmodule Ht16k33Multi.Display do
   Command to turn off blinking on the display.
   """
   @doc since: "0.1.0"
-  @spec blinking_off() :: 129
-  def blinking_off(), do: Blinking.off()
+  @spec blinking_off :: 129
+  def blinking_off, do: Blinking.off()
 end

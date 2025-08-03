@@ -72,5 +72,5 @@ defmodule Ht16k33Multi.Font do
   defp to_segment(character),
     do: Ar7segmentFont.map() |> Map.get(character |> String.upcase(), default_write_nothing())
 
-  defp default_write_nothing(), do: 0x00
+  defp default_write_nothing, do: 0x00
 end

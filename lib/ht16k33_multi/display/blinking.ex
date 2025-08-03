@@ -27,7 +27,7 @@ defmodule Ht16k33Multi.Display.Blinking do
     case speed do
       0 -> blinking_0_5hz()
       1 -> blinking_1hz()
-      _ -> blinking_2hz()
+      _other -> blinking_2hz()
     end
   end
 
@@ -35,10 +35,10 @@ defmodule Ht16k33Multi.Display.Blinking do
   Returns the command to disable blinking.
   """
   @doc since: "0.1.0"
-  @spec off() :: 129
-  def off(), do: 0x81
+  @spec off :: 129
+  def off, do: 0x81
 
-  defp blinking_0_5hz(), do: 0x87
-  defp blinking_1hz(), do: 0x85
-  defp blinking_2hz(), do: 0x83
+  defp blinking_0_5hz, do: 0x87
+  defp blinking_1hz, do: 0x85
+  defp blinking_2hz, do: 0x83
 end

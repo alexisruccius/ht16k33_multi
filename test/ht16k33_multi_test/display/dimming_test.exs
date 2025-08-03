@@ -1,6 +1,7 @@
 defmodule Ht16k33MultiTest.Display.DimmingTest do
+  use ExUnit.Case, async: true
+
   alias Ht16k33Multi.Display
-  use ExUnit.Case
 
   describe "set/1" do
     test "set right dimming value" do

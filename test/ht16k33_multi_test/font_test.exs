@@ -1,5 +1,5 @@
 defmodule Ht16k33MultiTest.FontTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Ht16k33Multi.Font
 

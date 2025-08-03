@@ -13,8 +13,8 @@ defmodule Ht16k33Multi.Font.Ar7segmentFont do
   used to display on a 7-segment display.
   """
   @doc since: "0.1.0"
-  @spec map() :: %{optional(nonempty_binary()) => byte()}
-  def map() do
+  @spec map :: %{optional(nonempty_binary()) => byte()}
+  def map do
     %{
       " " => 0x00,
       "." => 0x80,
